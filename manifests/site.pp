@@ -15,6 +15,9 @@ node 'slave1.puppet' {
 
 
 node 'slave2.puppet' {
+   
+   include '::php'
+   
    class { 'apache': }
    
    file { '/root/README':
