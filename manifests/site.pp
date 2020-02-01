@@ -1,4 +1,4 @@
-node 'default' {
+node default {
 }
 
 node 'slave1.puppet' {
