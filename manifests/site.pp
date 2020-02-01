@@ -15,14 +15,9 @@ node 'slave1.puppet' {
 }
 
 node 'slave2.puppet' {
-   
    class { 'apache::mod::php': }
-
-
-   
    
    class { 'php': }
-
    
    file { '/root/README':
       ensure => absent,
@@ -32,5 +27,10 @@ node 'slave2.puppet' {
       ensure => present,
       source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/files/index.php'
       }
+}
 
+node 'master.puppet' {
+   file { '/root/1111111':
+      ensure => file,
+      }
 }
