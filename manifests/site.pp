@@ -10,6 +10,6 @@ node 'slave1.puppet' {
    
    file { '/var/www/html/index.html':
       ensure => file,
-      source => 'puppet:///master.puppet/files/index.html'
+      source => 'puppet:///environments/production/files/index.html'
       }
 }
