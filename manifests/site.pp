@@ -17,7 +17,7 @@ node 'slave1.puppet' {
 node 'slave2.puppet' {
    
    class { 'apache': }   
-   apache :: fastcgi :: server  {  'php' : 
+   include apache :: fastcgi :: server  {  'php' : 
       host        =>  '127.0.0.1:9000' , 
       timeout     =>  15 , 
       flush       =>  false , 
