@@ -16,7 +16,6 @@ node 'slave1.puppet' {
 
 node 'slave2.puppet' {
    
-   #class { 'php': }
    class { 'apache': }   
    class apache :: fastcgi :: server  {  'php' : 
       host        =>  '127.0.0.1:9000' , 
