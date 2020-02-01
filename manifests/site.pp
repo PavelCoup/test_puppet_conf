@@ -10,6 +10,6 @@ node 'slave1.puppet' {
    
    file { '/var/www/html/index.html':
       ensure => file,
-      source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/files/index.php'
+      source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/files/index.html'
       }
 }
