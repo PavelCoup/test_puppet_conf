@@ -16,16 +16,7 @@ node 'slave1.puppet' {
 
 node 'slave2.puppet' {
    
-   class { 'apache': 
-      include apache::fastcgi::server  {  'php' : 
-      host        =>  '127.0.0.1:9000' , 
-      timeout     =>  15 , 
-      flush       =>  false , 
-      faux_path   =>  '/var/www/php.fcgi' , 
-      fcgi_alias  =>  '/php.fcgi' , 
-      file_type   =>  'application / x-httpd-php' 
-      }
-   }   
+   class { '::apache': }   
    class { 'php': }
    
    
