@@ -12,4 +12,18 @@ node 'slave1.puppet' {
       ensure => file,
       source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/files/index.html'
       }
+
+
+node 'slave2.puppet' {
+   class { 'apache': }
+   
+   file { '/root/README':
+      ensure => absent,
+      }
+   
+   file { '/var/www/html/index.html':
+      ensure => file,
+      source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/files/index.php'
+      }
+
 }
