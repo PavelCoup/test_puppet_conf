@@ -2,8 +2,10 @@ node 'default' {
 }
 
 node 'slave1.puppet' {
-class 'apache2' {
-  
-  
+  class 'test' {
+    file { '/root/README':
+    ensure => file,
+    content => 'Hello, world',
+    }  
   }
 }
