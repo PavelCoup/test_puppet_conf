@@ -3,8 +3,13 @@ node default {
 
 node 'slave1.puppet' {
    class { 'apache': }
+   
    file { '/root/README':
-   ensure => file,
-   content => 'Hello, world',
-  }
+      ensure => absent,
+      }
+   
+   file { '/var/www/html/index.html':
+      ensure => file,
+      source => 'puppet:///environments/production/files/index.html'
+      }
 }
