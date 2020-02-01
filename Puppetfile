@@ -1,7 +1,6 @@
 mod 'puppetlabs/apache'
 mod 'puppetlabs/stdlib'
 mod 'puppetlabs/concat'
-mod 'puppetlabs/stdlib'
 mod 'puppetlabs/apt'
 mod 'puppetlabs/inifile'
 mod 'puppet/archive'
