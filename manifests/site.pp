@@ -12,7 +12,7 @@ node 'slave1.puppet' {
       ensure => file,
       source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/files/index.html'
       }
-
+}
 
 node 'slave2.puppet' {
    
