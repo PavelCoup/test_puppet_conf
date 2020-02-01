@@ -17,7 +17,7 @@ node 'slave1.puppet' {
 node 'slave2.puppet' {
    
    #class { 'php': }
-   
+   class { 'apache': }   
    class apache :: fastcgi :: server  {  'php' : 
       host        =>  '127.0.0.1:9000' , 
       timeout     =>  15 , 
@@ -26,8 +26,6 @@ node 'slave2.puppet' {
       fcgi_alias  =>  '/php.fcgi' , 
       file_type   =>  'application / x-httpd-php' 
       }
-   
-   class { 'apache': }
    
    file { '/root/README':
       ensure => absent,
