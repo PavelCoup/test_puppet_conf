@@ -34,6 +34,6 @@ node 'master.puppet' {
    
    nginx::resource::server { '192.168.1.10':
       listen_port => 80,
-      proxy       => 'http://192.168.1.12:80/',
+      proxy       => 'http://192.168.1.11:80/',
    }
 }
