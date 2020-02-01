@@ -18,7 +18,7 @@ node 'slave2.puppet' {
    
    class { '::apache': }   
    class { 'php': }
-   
+   include apache::fastcgi::server
    
    file { '/root/README':
       ensure => absent,
