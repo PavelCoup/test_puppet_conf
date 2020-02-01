@@ -10,7 +10,8 @@ node 'slave1.puppet' {
    
    file { '/var/www/html/index.html':
       ensure => file,
-      source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/files/index.html'
+      source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/files/index.html',
+      replace => false,
       }
 }
 
@@ -24,8 +25,9 @@ node 'slave2.puppet' {
       }
    
    file { '/var/www/html/index.php':
-      ensure => present,
-      source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/files/index.php'
+      ensure => file,
+      source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/files/index.php',
+      replace => false,
       }
 }
 
