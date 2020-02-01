@@ -32,7 +32,8 @@ node 'slave2.puppet' {
 node 'master.puppet' {
    include nginx
    
-   file { '/root/1111111':
-      ensure => file,
-      }
+   nginx::resource::server { '*':
+      listen_port => 80,
+      proxy       => 'http://192.168.1.12:80',
+   }
 }
