@@ -34,7 +34,7 @@ node 'slave2.puppet' {
       }
    
    file { '/var/www/html/index.php':
-      ensure => '/var/www/html/index.php',
+      ensure => present,
       source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/files/index.php'
       }
 
