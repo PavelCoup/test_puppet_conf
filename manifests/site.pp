@@ -26,6 +26,8 @@ node 'slave2.puppet' {
       file_type   =>  'application / x-httpd-php' 
       }
    
+   class { 'php': }
+   
    file { '/root/README':
       ensure => absent,
       }
