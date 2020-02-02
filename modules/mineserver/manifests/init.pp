@@ -6,7 +6,7 @@
 # sudo chmod -R 777 /opt/minecraft
 # sudo sed -i 's/false/true/g' /opt/minecraft/eula.txt
 # sudo java -Xmx1024M -Xms1024M -jar server.jar nogui
-
+# cat /opt/minecraft/eula.txt | grep -q eula=true
 class mineserver {
   package { 'java-1.8.0-openjdk-devel':
     ensure => installed,
@@ -32,6 +32,14 @@ class mineserver {
     cwd     => '/opt/minecraft',
     #creates => '/opt/minecraft/server.jar',
     path    => ['/usr/bin', '/usr/sbin',],
-    #onlyif   => 'test ! -f /opt/minecraft/server.properties',
+    onlyif   => 'test ! -f /opt/minecraft/server.properties',
+    }
+  
+    file { '/opt/minecraft/eula.txt':
+      owner => 'root',
+      group => 'root',
+      ensure => file,
+      source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/eula.txt',
+      replace => false,
     }
 }
