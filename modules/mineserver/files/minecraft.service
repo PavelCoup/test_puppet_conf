@@ -9,6 +9,7 @@ Group=vagrant
 Type=forking
 #PIDFile=/opt/minecraft/service.pid
 KillMode=none
+TimeoutSec=900
 SuccessExitStatus=0 1
 NoNewPrivileges=true
 PrivateTmp=true
