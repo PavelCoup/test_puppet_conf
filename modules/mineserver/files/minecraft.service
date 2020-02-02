@@ -16,7 +16,7 @@ InaccessibleDirectories=/root /sys /srv /opt /media /lost+found
 ReadWriteDirectories=/opt/minecraft
 WorkingDirectory=/opt/minecraft
 
-ExecStart=/usr/bin/screen -h 1024 -dmS vagrant /opt/minecraft/launch.sh
+ExecStart=/opt/minecraft/launch.sh
 ExecStop=/opt/minecraft/stop.sh
 
 [Install]
