@@ -3,6 +3,10 @@ class mineserver {
     ensure => installed,
     }
   
+  package { 'screen':
+    ensure => installed,
+    }
+
   file { '/opt/minecraft':
     owner => 'root',
     group => 'root',
