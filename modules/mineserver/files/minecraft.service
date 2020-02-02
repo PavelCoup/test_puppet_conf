@@ -4,6 +4,7 @@ Documentation=
 
 Wants=network.target
 After=network.target
+After=syslog.target
 
 [Service]
 User=root
@@ -12,9 +13,6 @@ Nice=5
 KillMode=none
 SuccessExitStatus=0 1
 
-ProtectHome=true
-ProtectSystem=full
-PrivateDevices=true
 NoNewPrivileges=true
 PrivateTmp=true
 InaccessibleDirectories=/root /sys /srv -/opt /media -/lost+found
