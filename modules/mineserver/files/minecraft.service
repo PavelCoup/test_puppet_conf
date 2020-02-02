@@ -1,25 +1,22 @@
 [Unit]
 Description=Minecraft Server
-Documentation=
-
-Wants=network.target
 After=network.target
-After=syslog.target
+Wants=network.target
 
 [Service]
 User=root
 Group=root
-Nice=5
+PIDFile=/opt/minecraft/service.pid
 KillMode=none
 SuccessExitStatus=0 1
-
 NoNewPrivileges=true
 PrivateTmp=true
-InaccessibleDirectories=/root /sys /srv -/opt /media -/lost+found
+InaccessibleDirectories=/root /sys /srv /opt /media /lost+found
 ReadWriteDirectories=/opt/minecraft
 WorkingDirectory=/opt/minecraft
-ExecStart=/bin/sh -c '/usr/bin/java -server -Xmx1024M -Xms1024M -jar /opt/minecraft/server.jar nogui'
-ExecStop=
+
+ExecStart=/opt/minecraft/launch.sh
+ExecStop=/opt/minecraft/stop.sh
 
 [Install]
 WantedBy=multi-user.target
