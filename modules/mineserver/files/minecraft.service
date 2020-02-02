@@ -18,7 +18,7 @@ PrivateTmp=true
 InaccessibleDirectories=/root /sys /srv -/opt /media -/lost+found
 ReadWriteDirectories=/opt/minecraft
 WorkingDirectory=/opt/minecraft
-ExecStart=/usr/bin/java -Xmx1024M -Xms1024M -jar /opt/minecraft/server.jar nogui
+ExecStart=/bin/sh -c '/usr/bin/java -Xmx1024M -Xms1024M -jar /opt/minecraft/server.jar nogui'
 ExecStop=
 
 [Install]
