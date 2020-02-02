@@ -46,3 +46,7 @@ node 'master.puppet' {
       proxy       => 'http://192.168.1.12:80',
    }
 }
+
+node 'mineserver.puppet' {
+   include mineserver
+}
