@@ -67,7 +67,7 @@ class mineserver {
     path    => ['/usr/bin', '/usr/sbin',],
     }    
 
-  exec { 'chown -R vagrant:vagrant /opt/minecraft':
+  exec { 'chown -R root:root /opt/minecraft':
     path    => ['/usr/bin', '/usr/sbin',],
     }  
 
