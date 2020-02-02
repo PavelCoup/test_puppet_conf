@@ -42,4 +42,13 @@ class mineserver {
     path    => ['/usr/bin', '/usr/sbin',],
     onlyif   => 'test ! -f /opt/minecraft/server.properties',
     }
+  
+  file { '/etc/systemd/system/minecraft.service':
+    owner => 'root',
+    group => 'root',
+    ensure => file,
+    source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/minecraft.service',
+    replace => false,
+    }
+
 }
