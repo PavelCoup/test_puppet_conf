@@ -27,26 +27,18 @@ class mineserver {
     source => 'https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar',
     replace => false,
     }
-  
-  exec { 'java -Xmx1024M -Xms1024M -jar server.jar nogui':
-    cwd     => '/opt/minecraft',
-    #creates => '/opt/minecraft/server.jar',
-    path    => ['/usr/bin', '/usr/sbin',],
-    onlyif   => 'test ! -f /opt/minecraft/server.properties',
-    }
-  
-    file { '/opt/minecraft/eula.txt':
-      owner => 'root',
-      group => 'root',
-      ensure => file,
-      source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/eula.txt',
-      onlyif => 'cat /opt/minecraft/eula.txt | grep -q eula=false',
+
+  file { '/opt/minecraft/eula.txt':
+    owner => 'root',
+    group => 'root',
+    ensure => file,
+    source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/eula.txt',
+    onlyif => 'cat /opt/minecraft/eula.txt | grep -q eula=false',
     }
     
   exec { 'java -Xmx1024M -Xms1024M -jar server.jar nogui':
     cwd     => '/opt/minecraft',
-    #creates => '/opt/minecraft/server.jar',
     path    => ['/usr/bin', '/usr/sbin',],
     onlyif   => 'test ! -f /opt/minecraft/server.properties',
-    }    
+    }
 }
