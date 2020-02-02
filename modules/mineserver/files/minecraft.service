@@ -1,26 +1,13 @@
 [Unit]
-Description=Minecraft Server
-After=network.target
-Wants=network.target
+Description=start and stop the minecraft-server
 
 [Service]
-User=root
-Group=root
-Type=forking
-#PIDFile=/opt/minecraft/service.pid
-KillMode=none
-#ExecStartPre=/bin/sleep 30
-TimeoutSec=900
-SuccessExitStatus=0 1
-NoNewPrivileges=true
-PrivateTmp=true
-InaccessibleDirectories=/home
-ReadOnlyDirectories=/bin /lib /usr /etc /
-ReadWriteDirectories=/opt/minecraft
 WorkingDirectory=/opt/minecraft
-
-ExecStart=/opt/minecraft/launch.sh
-ExecStop=/opt/minecraft/stop.sh
+User=minecraft
+Group=minecraft
+Restart=on-failure
+RestartSec=20 5
+ExecStart=/usr/bin/java -Xms1536M -Xmx1536M -jar server.jar nogui
 
 [Install]
 WantedBy=multi-user.target
