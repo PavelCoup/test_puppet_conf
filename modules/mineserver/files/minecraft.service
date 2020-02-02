@@ -12,7 +12,8 @@ KillMode=none
 SuccessExitStatus=0 1
 NoNewPrivileges=true
 PrivateTmp=true
-InaccessibleDirectories=/root /sys /srv /opt /media /lost+found
+InaccessibleDirectories=/home
+ReadOnlyDirectories=/bin /lib /usr /etc /
 ReadWriteDirectories=/opt/minecraft
 WorkingDirectory=/opt/minecraft
 
