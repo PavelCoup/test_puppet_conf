@@ -4,8 +4,8 @@ After=network.target
 Wants=network.target
 
 [Service]
-User=vagrant
-Group=vagrant
+User=root
+Group=root
 Type=forking
 #PIDFile=/opt/minecraft/service.pid
 KillMode=none
