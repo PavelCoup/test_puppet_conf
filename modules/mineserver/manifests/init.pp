@@ -2,10 +2,6 @@ class mineserver {
   package { 'java-1.8.0-openjdk-devel':
     ensure => installed,
     }
-  
-  package { 'screen':
-    ensure => installed,
-    }
 
   file { '/opt/minecraft':
     owner => 'root',
