@@ -29,8 +29,6 @@ class mineserver {
     }
   
   exec { 'java -Xmx1024M -Xms1024M -jar server.jar nogui':
-    owner => 'root',
-    group => 'root',
     cwd     => '/opt/minecraft',
     creates => '/opt/minecraft/server.jar',
     path    => ['/usr/bin', '/usr/sbin',],
