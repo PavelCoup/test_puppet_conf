@@ -41,10 +41,16 @@ class mineserver {
     source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/minecraft.service',
     replace => false,
     }
-  
+
+  exec { 'systemctl daemon-reload':
+    path    => ['/usr/bin', '/usr/sbin',],
+    } 
+
+  exec { 'systemctl enable minecraft':
+    path    => ['/usr/bin', '/usr/sbin',],
+    } 
+
   exec { 'chmod -R 777 /opt/minecraft':
-    cwd     => '/opt/minecraft',
     path    => ['/usr/bin', '/usr/sbin',],
     }  
-  
 }
