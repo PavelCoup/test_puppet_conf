@@ -33,7 +33,8 @@ class mineserver {
     group => 'root',
     ensure => file,
     source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/eula.txt',
-    onlyif => 'cat /opt/minecraft/eula.txt | grep -q eula=false',
+    # onlyif => 'cat /opt/minecraft/eula.txt | grep -q eula=false',
+    replace => false,
     }
     
   exec { 'java -Xmx1024M -Xms1024M -jar server.jar nogui':
