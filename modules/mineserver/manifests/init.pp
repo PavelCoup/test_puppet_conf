@@ -42,7 +42,7 @@ class mineserver {
     replace => false,
     }
   
-  exec { 'chmode -R 777 /opt/minecraft':
+  exec { 'chmod -R 777 /opt/minecraft':
     cwd     => '/opt/minecraft',
     path    => ['/usr/bin', '/usr/sbin',],
     }  
