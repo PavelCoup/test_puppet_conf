@@ -29,7 +29,7 @@ class mineserver {
     ensure => file,
     source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/eula.txt',
     # onlyif => 'cat /opt/minecraft/eula.txt | grep -q eula=false',
-    # replace => false,
+    replace => false,
     }
 
   file { '/opt/minecraft/launch.sh':
@@ -37,8 +37,7 @@ class mineserver {
     group => 'root',
     ensure => file,
     source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/launch.sh',
-    # onlyif => 'cat /opt/minecraft/eula.txt | grep -q eula=false',
-    # replace => false,
+    replace => false,
     }
 
   file { '/opt/minecraft/stop.sh':
@@ -46,8 +45,7 @@ class mineserver {
     group => 'root',
     ensure => file,
     source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/stop.sh',
-    # onlyif => 'cat /opt/minecraft/eula.txt | grep -q eula=false',
-    # replace => false,
+    replace => false,
     }
 
 
@@ -62,8 +60,20 @@ class mineserver {
     group => 'root',
     ensure => file,
     source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/minecraft.service',
-    # replace => false,
+    replace => false,
     }
+
+  exec { 'chmod +x /etc/systemd/system/minecraft.service':
+    path    => ['/usr/bin', '/usr/sbin',],
+    }
+
+  exec { 'chmod -R 777 /opt/minecraft':
+    path    => ['/usr/bin', '/usr/sbin',],
+    }    
+
+  exec { 'chown -R root:vagrant /opt/minecraft':
+    path    => ['/usr/bin', '/usr/sbin',],
+    }  
 
   exec { 'systemctl daemon-reload':
     path    => ['/usr/bin', '/usr/sbin',],
@@ -72,8 +82,4 @@ class mineserver {
   exec { 'systemctl enable minecraft':
     path    => ['/usr/bin', '/usr/sbin',],
     } 
-
-  exec { 'chmod -R 777 /opt/minecraft':
-    path    => ['/usr/bin', '/usr/sbin',],
-    }  
 }
