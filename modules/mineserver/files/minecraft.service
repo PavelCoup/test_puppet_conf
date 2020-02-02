@@ -6,6 +6,7 @@ Wants=network.target
 [Service]
 User=vagrant
 Group=vagrant
+Type=forking
 PIDFile=/opt/minecraft/service.pid
 KillMode=none
 SuccessExitStatus=0 1
@@ -15,7 +16,7 @@ InaccessibleDirectories=/root /sys /srv /opt /media /lost+found
 ReadWriteDirectories=/opt/minecraft
 WorkingDirectory=/opt/minecraft
 
-ExecStart=/opt/minecraft/launch.sh
+ExecStart=/usr/bin/screen -h 1024 -dmS vagrant /opt/minecraft/launch.sh
 ExecStop=/opt/minecraft/stop.sh
 
 [Install]
