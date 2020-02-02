@@ -25,9 +25,28 @@ class mineserver {
     ensure => file,
     source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/eula.txt',
     # onlyif => 'cat /opt/minecraft/eula.txt | grep -q eula=false',
-    replace => false,
+    # replace => false,
     }
-    
+
+  file { '/opt/minecraft/launch.sh':
+    owner => 'root',
+    group => 'root',
+    ensure => file,
+    source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/launch.sh',
+    # onlyif => 'cat /opt/minecraft/eula.txt | grep -q eula=false',
+    # replace => false,
+    }
+
+  file { '/opt/minecraft/stop.sh':
+    owner => 'root',
+    group => 'root',
+    ensure => file,
+    source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/stop.sh',
+    # onlyif => 'cat /opt/minecraft/eula.txt | grep -q eula=false',
+    # replace => false,
+    }
+
+
   exec { 'java -Xmx1024M -Xms1024M -jar server.jar nogui':
     cwd     => '/opt/minecraft',
     path    => ['/usr/bin', '/usr/sbin',],
