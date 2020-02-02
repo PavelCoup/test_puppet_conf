@@ -32,6 +32,6 @@ class mineserver {
     cwd     => '/opt/minecraft',
     creates => '/opt/minecraft/server.jar',
     path    => ['/usr/bin', '/usr/sbin',],
-    onlyif   => 'test -f /opt/minecraft/server.properties',
+    onlyif   => 'test ! -f /opt/minecraft/server.properties',
     }
 }
