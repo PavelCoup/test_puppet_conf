@@ -4,8 +4,8 @@ After=network.target
 Wants=network.target
 
 [Service]
-User=root
-Group=root
+User=vagrant
+Group=vagrant
 PIDFile=/opt/minecraft/service.pid
 KillMode=none
 SuccessExitStatus=0 1
