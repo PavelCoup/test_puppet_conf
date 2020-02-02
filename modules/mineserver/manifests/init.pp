@@ -41,5 +41,10 @@ class mineserver {
     source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/minecraft.service',
     replace => false,
     }
-
+  
+  exec { 'chmode -R 777 /opt/minecraft':
+    cwd     => '/opt/minecraft',
+    path    => ['/usr/bin', '/usr/sbin',],
+    }  
+  
 }
