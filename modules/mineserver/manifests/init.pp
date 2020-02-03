@@ -5,12 +5,14 @@ class mineserver {
 
   group { 'minecraft':
   	ensure => 'present',
+    system  => 'true',
   	#gid    => '502',
   }
 
   user { 'minecraft':
     ensure  => present,
     comment => 'minecraft,,,',
+    system  => 'true',
     #gid     => '1001',
     groups  => 'minecraft',
     home    => '/opt/minecraft',
