@@ -1,5 +1,5 @@
 class profile::download_site (
-  String $url_site_download = 
+  String $url_site_download = 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/files/index.html',
 )
 
 {
