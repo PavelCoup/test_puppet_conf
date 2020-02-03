@@ -26,6 +26,7 @@ class mineserver {
     ensure => "directory",
     purge => false,
     recurse => true,
+    mode => '0777',
     }
   
   file { '/opt/minecraft/server.jar':
@@ -34,6 +35,7 @@ class mineserver {
     ensure => file,
     source => 'https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar',
     replace => false,
+    mode => '0777',
     }
 
   file { '/opt/minecraft/eula.txt':
@@ -43,6 +45,7 @@ class mineserver {
     source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/eula.txt',
     # onlyif => 'cat /opt/minecraft/eula.txt | grep -q eula=false',
     replace => false,
+    mode => '0777',
     }
   
   file { '/etc/systemd/system/minecraft.service':
@@ -55,25 +58,21 @@ class mineserver {
 
   exec { 'chmod +x /etc/systemd/system/minecraft.service':
     path    => ['/usr/bin', '/usr/sbin',],
+    onlyif => 'ls -l /etc/systemd/system/minecraft.service | grep -q rw\-r\-\-'
     }
-
-  exec { 'chmod -R 777 /opt/minecraft':
-    path    => ['/usr/bin', '/usr/sbin',],
-    }    
-
-  exec { 'chown -R minecraft:minecraft /opt/minecraft':
-    path    => ['/usr/bin', '/usr/sbin',],
-    }  
 
   exec { 'systemctl daemon-reload':
     path    => ['/usr/bin', '/usr/sbin',],
+    onlyif => 'systemctl status minecraft | grep -q not-found\;',
     } 
 
   exec { 'systemctl enable minecraft':
     path    => ['/usr/bin', '/usr/sbin',],
+    onlyif => 'systemctl status minecraft | grep -q disabled\;',
     } 
     
   exec { 'systemctl restart minecraft':
     path    => ['/usr/bin', '/usr/sbin',],
+    onlyif => 'systemctl status minecraft | grep -q dead',
     }     
 }
