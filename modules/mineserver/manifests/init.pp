@@ -4,7 +4,7 @@ class mineserver {
     }
 
   group { 'minecraft':
-  	ensure => 'present',
+    ensure => 'present',
     system  => 'true',
   	#gid    => '502',
   }
