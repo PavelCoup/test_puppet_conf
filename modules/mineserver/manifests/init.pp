@@ -9,18 +9,15 @@ class mineserver {
   group { 'minecraft':
     ensure => 'present',
     system  => 'true',
-  	#gid    => '502',
   }
 
   user { 'minecraft':
     ensure  => present,
     comment => 'minecraft,,,',
     system  => 'true',
-    #gid     => '1001',
     groups  => 'minecraft',
     home    => '/opt/minecraft',
     shell   => '/bin/bash',
-    #uid     => '1001',
   }
 
   file { '/opt/minecraft':
@@ -45,7 +42,6 @@ class mineserver {
     owner => 'minecraft',
     group => 'minecraft',
     ensure => file,
-    #source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/eula.txt',
     content => 'eula=true',
     replace => false,
     mode => '0777',
