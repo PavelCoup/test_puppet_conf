@@ -66,6 +66,7 @@ class mineserver {
   
   service { 'minecraft':
     ensure    => 'running',
+    enable => 'true',
     subscribe => File['/etc/systemd/system/minecraft.service'],
     require => Class['systemd::daemon_reload'],
     }
