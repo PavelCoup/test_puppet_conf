@@ -1,4 +1,4 @@
-class role::slave2 {
+class role::slave1 {
 include profile::remove_readme
 include profile::web_servers::dynamic
 class { 'profile::download_site' : 
