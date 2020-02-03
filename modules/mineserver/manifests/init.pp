@@ -9,7 +9,7 @@ class mineserver {
   group { 'minecraft':
     ensure => 'present',
     system  => 'true',
-  }
+    }
 
   user { 'minecraft':
     ensure  => present,
@@ -18,7 +18,7 @@ class mineserver {
     groups  => 'minecraft',
     home    => '/opt/minecraft',
     shell   => '/bin/bash',
-  }
+    }
 
   file { '/opt/minecraft':
     owner => 'minecraft',
