@@ -5,7 +5,7 @@ class profile::download_site (
 {
   file { '/var/www/html/index.html':
       ensure => file,
-      source => '$url_site_download',
+      source => $url_site_download,
       replace => false,
       }
 }
