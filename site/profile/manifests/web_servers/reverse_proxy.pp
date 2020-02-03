@@ -1,6 +1,6 @@
 class profile::web_servers::reverse_proxy (
-  String $port_proxy = '80',
-  String $ip_proxy = '192.168.1.12',
+  String $port_proxy,
+  String $ip_proxy,
 )
 {
   include nginx
