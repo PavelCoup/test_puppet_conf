@@ -1,4 +1,7 @@
 class mineserver {
+  
+  include systemd::systemctl::daemon_reload
+  
   package { 'java-1.8.0-openjdk-devel':
     ensure => installed,
     }
@@ -42,8 +45,8 @@ class mineserver {
     owner => 'minecraft',
     group => 'minecraft',
     ensure => file,
-    source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/eula.txt',
-    # onlyif => 'cat /opt/minecraft/eula.txt | grep -q eula=false',
+    #source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/eula.txt',
+    content => 'eula=true',
     replace => false,
     mode => '0777',
     }
@@ -52,27 +55,18 @@ class mineserver {
     owner => 'root',
     group => 'root',
     ensure => file,
+    mode   => '0644',
     source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/minecraft.service',
     replace => false,
+    notify => [
+      Class['systemd::daemon_reload'],
+      Service['minecraft'],
+      ],
     }
-
-  exec { 'chmod +x /etc/systemd/system/minecraft.service':
-    path    => ['/usr/bin', '/usr/sbin',],
-    onlyif => 'ls -l /etc/systemd/system/minecraft.service | grep -q rw\-r\-\-'
+  
+  service { 'minecraft':
+    ensure    => 'running',
+    subscribe => File['/etc/systemd/system/minecraft.service'],
+    require => Class['systemd::daemon_reload'],
     }
-
-  exec { 'systemctl daemon-reload':
-    path    => ['/usr/bin', '/usr/sbin',],
-    onlyif => 'systemctl status minecraft | grep -q not-found\;',
-    } 
-
-  exec { 'systemctl enable minecraft':
-    path    => ['/usr/bin', '/usr/sbin',],
-    onlyif => 'systemctl status minecraft | grep -q disabled\;',
-    } 
-    
-  exec { 'systemctl restart minecraft':
-    path    => ['/usr/bin', '/usr/sbin',],
-    onlyif => 'systemctl status minecraft | grep -q dead',
-    }     
 }
