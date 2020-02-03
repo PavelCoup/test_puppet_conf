@@ -2,6 +2,7 @@
 Description=start and stop the minecraft-server
 
 [Service]
+SuccessExitStatus=143
 WorkingDirectory=/opt/minecraft
 User=minecraft
 Group=minecraft
