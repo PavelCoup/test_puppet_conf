@@ -38,13 +38,7 @@ node 'master.puppet' {
       ensure      => present,
       listen_port => 80,
       proxy       => 'http://192.168.1.12:80',
-   }
-
-   nginx::resource::server { '192.168.1.10:81':
-      ensure      => present,
-      listen_port => 81,
-      proxy       => 'http://192.168.1.12:80',
-   }
+      }
 }
 
 node 'mineserver.puppet' {
