@@ -7,6 +7,6 @@ class profile::web_servers::reverse_proxy (
   nginx::resource::server { '192.168.1.10:80' :
      ensure      => present,
      listen_port => 80,
-     proxy       => "${ip_proxy}:${port_proxy}",
+     proxy       => "http://${ip_proxy}:${port_proxy}",
      }
 }
