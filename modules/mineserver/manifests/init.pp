@@ -58,13 +58,13 @@ class mineserver {
     mode   => '0644',
     source => 'https://raw.githubusercontent.com/PavelCoup/test_puppet_conf/production/modules/mineserver/files/minecraft.service',
     replace => false,
-    notify => Class['systemd::daemon_reload'],
+    notify => Class['systemd::systemctl::daemon_reload'],
     }
   
   service { 'minecraft':
     ensure    => 'running',
     enable => 'true',
     subscribe => File['/etc/systemd/system/minecraft.service'],
-    require => Class['systemd::daemon_reload'],
+    require => Class['systemd::systemctl::daemon_reload'],
     }
 }
